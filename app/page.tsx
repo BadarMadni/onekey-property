@@ -1,65 +1,81 @@
-import Image from "next/image";
+import Button from "@/components/ui/Button";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ServiceCard from "@/components/ui/ServiceCard";
+import BenefitCard from "@/components/ui/BenefitCard";
+import CTABanner from "@/components/ui/CTABanner";
+import AnimateIn from "@/components/ui/AnimateIn";
+import AnimatedHero from "@/components/sections/AnimatedHero";
+import AnimatedStats from "@/components/sections/AnimatedStats";
+import { ShieldIcon, ClockIcon, PoundIcon, HeartIcon, KeyIcon, WrenchIcon, ChartIcon } from "@/components/ui/Icons";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <>
+      <AnimatedHero />
+      <AnimatedStats />
+
+      {/* Benefits */}
+      <section className="py-20 md:py-24 bg-gradient-to-b from-white via-gray-light/50 to-gray-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimateIn>
+            <SectionHeading
+              title="Why Landlords Choose Us"
+              subtitle="We take the stress out of property management with our comprehensive services"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </AnimateIn>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <AnimateIn delay={0.1} direction="left">
+              <BenefitCard icon={<PoundIcon />} title="Maximise Your Rental Income" description="Our expert pricing and marketing strategies ensure your property generates the best possible returns." />
+            </AnimateIn>
+            <AnimateIn delay={0.2} direction="right">
+              <BenefitCard icon={<ShieldIcon />} title="Fully Compliant & Insured" description="We handle all legal requirements, safety checks, and compliance so you have complete peace of mind." />
+            </AnimateIn>
+            <AnimateIn delay={0.3} direction="left">
+              <BenefitCard icon={<ClockIcon />} title="Save Your Time" description="From tenant sourcing to maintenance, we manage everything so you can focus on what matters." />
+            </AnimateIn>
+            <AnimateIn delay={0.4} direction="right">
+              <BenefitCard icon={<HeartIcon />} title="Dedicated Support" description="A named property manager for every landlord, providing personal and responsive service." />
+            </AnimateIn>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Services Overview */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-primary-dark via-primary to-primary-light relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-light/5 rounded-full blur-[120px]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimateIn>
+            <SectionHeading
+              title="Our Services"
+              subtitle="Comprehensive property management for landlords and tenants"
+              light
+            />
+          </AnimateIn>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <KeyIcon />, title: "Tenant Sourcing", description: "Finding quality, vetted tenants quickly to minimise void periods." },
+              { icon: <PoundIcon />, title: "Rent Collection", description: "Reliable rent collection and arrears management on your behalf." },
+              { icon: <WrenchIcon />, title: "Maintenance", description: "24/7 maintenance coordination with trusted local contractors." },
+              { icon: <ChartIcon />, title: "Full Management", description: "End-to-end property management so you can be hands-off." },
+            ].map((service, i) => (
+              <AnimateIn key={service.title} delay={i * 0.15}>
+                <ServiceCard {...service} dark />
+              </AnimateIn>
+            ))}
+          </div>
+          <AnimateIn delay={0.6}>
+            <div className="text-center mt-12">
+              <Button href="/landlord-services" variant="primary" size="lg">View All Services &rarr;</Button>
+            </div>
+          </AnimateIn>
+        </div>
+      </section>
+
+      <CTABanner
+        title="Ready to Let Your Property?"
+        subtitle="Get a free, no-obligation valuation today and find out how much your property could earn."
+      />
+    </>
   );
 }
