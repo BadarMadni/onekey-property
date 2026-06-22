@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/landlord-services", label: "Landlord Services" },
   { href: "/tenant-support", label: "Tenant Support" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact Us" },
 ];
 
