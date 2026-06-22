@@ -53,3 +53,9 @@ export const properties: Property[] = [
 
 // Flat list for any component that still needs it
 export const galleryImages: GalleryImage[] = properties.flatMap((p) => p.images);
+
+// Categories derived from properties (for legacy filter components)
+export const categories = [
+  { id: "all", label: "All Properties", location: "" },
+  ...properties.map((p) => ({ id: p.id, label: p.name, location: p.location })),
+];
